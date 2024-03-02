@@ -112,6 +112,7 @@ class Board {
 		if (height) this.height = Math.max(height, 1);
 		if (!(oldWidth === width && oldHeight === height)) {
 			this.doAdjust$creenCss();
+			this.doSet$sceenCssVariables();
 			if (width < oldWidth || height < oldHeight) this.doCullPanels(oldWidth, oldHeight);
 			this.sideMenu.doUpdateDimensions();
 		}
@@ -138,6 +139,14 @@ class Board {
 				}
 			}
 		}
+	}
+
+	doSet$sceenCssVariables () {
+		this.$creen.get(0).style.setProperty(
+			"--dmScreenWidth",
+			this.width,
+		);
+		this.$creen.get(0).style.setProperty("--dmScreenHeight", this.height);
 	}
 
 	doAdjust$creenCss () {
