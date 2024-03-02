@@ -85,11 +85,7 @@ jobs:
                   MINOR=${VERSION_ARRAY[1]}
                   POINT=${VERSION_ARRAY[2]}
 
-                  # Create a clean docker image every 4 minor version.
-                  if [[ $(echo "$MINOR % 4" | bc) == 0 && $POINT == 0 ]]
-                  then
-                     DO_CLEAN_BUILD=1
-                  fi
+                  DO_CLEAN_BUILD=1
                fi
 
                if [[ $DO_CLEAN_BUILD == 1 ]]
